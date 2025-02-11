@@ -1,0 +1,1 @@
+<TRIGGER_WORDS>, masterpiece, best quality, amazing quality, very aesthetic, absurdres, newest, (volumetric lighting) --n lowres, (worst quality, bad quality:1.2), bad anatomy, sketch, jpeg artifacts, signature, watermark, old, oldest, censored, bar_censor, simple background, text --w 1024 --h 1024 --d 42 --l 5 --s 28

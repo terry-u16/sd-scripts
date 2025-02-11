@@ -1,0 +1,7 @@
+max_train_steps = 2000
+learning_rate = 0.0025
+metadata_description = "recommended tags: <TAG>"
+network_dim = 16
+output_name = "<OUTPUT_NAME>"
+save_every_n_steps = 100
+train_batch_size = 1
