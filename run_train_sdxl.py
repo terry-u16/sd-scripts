@@ -1,5 +1,5 @@
-import subprocess
 import shutil
+import subprocess
 
 import toml
 
@@ -13,7 +13,6 @@ with open("config/config_secret.toml") as f:
     config_secret = toml.load(f)
 
 
-config_variables["sample_every_n_steps"] = config_variables["save_every_n_steps"]
 config_variables["network_alpha"] = max(config_variables["network_dim"] / 4, 1)
 
 config.update(config_variables)
