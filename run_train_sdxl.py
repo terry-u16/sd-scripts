@@ -3,27 +3,25 @@ import subprocess
 
 import toml
 
-with open("config/config_template.toml") as f:
-    config = toml.load(f)
 
-with open("config/config_variables.toml") as f:
-    config_variables = toml.load(f)
-
-with open("config/config_secret.toml") as f:
-    config_secret = toml.load(f)
+# Windows 環境では既定エンコーディング (cp932) で開くと UTF-8 の日本語コメントを含む
+# TOML ファイル読み込み時に UnicodeDecodeError になる場合があるため、明示的に UTF-8 を指定。
+def load_toml(path: str):
+    with open(path, "r", encoding="utf-8") as f:
+        return toml.load(f)
 
 
-config_variables["network_alpha"] = max(config_variables["network_dim"] / 4, 1)
+config = load_toml("config/config_template.toml")
+config_variables = load_toml("config/config_variables.toml")
+config_secret = load_toml("config/config_secret.toml")
 
 config.update(config_variables)
 config.update(config_secret)
 
-with open("config/config.toml", "w") as f:
+with open("config/config.toml", "w", encoding="utf-8") as f:
     toml.dump(config, f)
 
 print("config.toml is generated.")
-
-shutil.copy("config/prompt.txt", config["sample_prompts"])
 
 args = [
     "accelerate",
