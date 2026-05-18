@@ -3,4 +3,7 @@
 !config_template.toml
 !config_variables.toml
 !config_secret_example.toml
+!anima_config_template.toml
+!anima_config_variables.toml
+!anima_config_secret_example.toml
 !prompt_example.txt

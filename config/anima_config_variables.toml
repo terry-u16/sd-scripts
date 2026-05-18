@@ -1,0 +1,21 @@
+max_train_steps = 5000
+learning_rate = 1e-4
+
+# Character LoRA
+# network_dim = 32
+# network_alpha = 32
+
+# Style LoRA example
+network_dim = 64
+network_alpha = 64
+
+metadata_description = "recommended tags: hoge"
+output_name = "hoge_anima_v1.0"
+
+# Optional sampling / checkpoint cadence
+# save_every_n_steps = 500
+sample_every_n_steps = 250
+
+# Qwen3/T5 token lengths
+qwen3_max_token_length = 512
+t5_max_token_length = 512

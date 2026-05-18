@@ -1,0 +1,42 @@
+# Anima LoRA training defaults.
+# Local paths and per-run values are split into anima_config_secret.toml and
+# anima_config_variables.toml so SDXL settings can remain untouched.
+
+bucket_no_upscale = false
+bucket_reso_steps = 16
+cache_latents = true
+cache_latents_to_disk = true
+cache_text_encoder_outputs = true
+caption_extension = ".txt"
+dynamo_backend = "no"
+enable_bucket = true
+gradient_accumulation_steps = 1
+gradient_checkpointing = true
+loss_type = "l2"
+lr_scheduler = "constant"
+lr_scheduler_args = []
+lr_scheduler_num_cycles = 1
+lr_scheduler_power = 1
+lr_warmup_steps = 0
+max_bucket_reso = 1536
+max_data_loader_n_workers = 0
+max_grad_norm = 1
+mixed_precision = "bf16"
+network_args = []
+network_module = "networks.lora_anima"
+network_train_unet_only = true
+optimizer_args = []
+optimizer_type = "schedulefree.RAdamScheduleFree"
+prior_loss_weight = 1
+resolution = "1536,1536"
+sample_every_n_steps = 250
+save_model_as = "safetensors"
+save_precision = "fp16"
+split_attn = true
+timestep_sampling = "sigmoid"
+sigmoid_scale = 1.0
+discrete_flow_shift = 1.0
+train_batch_size = 1
+vae_chunk_size = 64
+vae_disable_cache = true
+weighting_scheme = "none"
