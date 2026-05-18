@@ -6,3 +6,5 @@ venv
 build
 .vscode
 wandb
+/training_data
+/outputs
