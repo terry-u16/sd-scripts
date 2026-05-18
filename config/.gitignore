@@ -1,0 +1,6 @@
+*
+!.gitignore
+!config_template.toml
+!config_variables.toml
+!config_secret_example.toml
+!prompt_example.txt
