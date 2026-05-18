@@ -1,5 +1,4 @@
 import argparse
-import re
 from pathlib import Path
 
 parser = argparse.ArgumentParser()

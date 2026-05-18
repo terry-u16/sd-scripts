@@ -1,5 +1,4 @@
 import argparse
-import re
 from pathlib import Path
 
 parser = argparse.ArgumentParser()
@@ -14,7 +13,6 @@ parser.add_argument(
     "-t", "--tag", type=str, nargs="+", help="Tags to remove from the .txt files"
 )
 args = parser.parse_args()
-patterns = list(map(lambda t: re.compile(rf"(?<!\w){t}(\s*,\s*|\s*$)"), args.tag))
 
 for path in Path(args.dir).glob("*.txt"):
     with open(path, "r") as f:
