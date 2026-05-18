@@ -620,6 +620,59 @@ python networks/convert_anima_lora_to_comfy.py path/to/source.safetensors path/t
 
 </details>
 
+### `networks/anima_merge_lora.py`
+
+A script to merge Anima LoRA weights into an Anima DiT checkpoint. Its interface is similar to `networks/sdxl_merge_lora.py`, but use `--dit` instead of `--sd_model`:
+
+```bash
+python networks/anima_merge_lora.py \
+  --dit path/to/anima_dit.safetensors \
+  --save_to path/to/merged_anima_dit.safetensors \
+  --models path/to/lora.safetensors \
+  --ratios 1.0 \
+  --precision float \
+  --save_precision bf16
+```
+
+If `--dit` is omitted, LoRA models are merged together:
+
+```bash
+python networks/anima_merge_lora.py \
+  --save_to path/to/merged_lora.safetensors \
+  --models path/to/lora_a.safetensors path/to/lora_b.safetensors \
+  --ratios 0.7 0.3
+```
+
+Only DiT LoRA weights can be merged into an Anima DiT checkpoint. The script accepts both sd-scripts-style `lora_unet_*` keys and common `diffusion_model.*.lora_A/B.weight` keys. If the LoRA also contains text encoder weights such as `lora_te_*`, the script stops by default. Use `--allow_partial` to ignore non-DiT LoRA keys.
+
+<details>
+<summary>日本語</summary>
+
+Anima LoRAをAnima DiTチェックポイントへマージするためのスクリプトです。インターフェースは `networks/sdxl_merge_lora.py` に近いですが、`--sd_model` の代わりに `--dit` を指定します：
+
+```bash
+python networks/anima_merge_lora.py \
+  --dit path/to/anima_dit.safetensors \
+  --save_to path/to/merged_anima_dit.safetensors \
+  --models path/to/lora.safetensors \
+  --ratios 1.0 \
+  --precision float \
+  --save_precision bf16
+```
+
+`--dit` を省略すると、LoRA同士をマージします：
+
+```bash
+python networks/anima_merge_lora.py \
+  --save_to path/to/merged_lora.safetensors \
+  --models path/to/lora_a.safetensors path/to/lora_b.safetensors \
+  --ratios 0.7 0.3
+```
+
+Anima DiTチェックポイントへマージできるのはDiT用LoRAの重みのみです。スクリプトはsd-scripts形式の `lora_unet_*` と、よく使われる `diffusion_model.*.lora_A/B.weight` の両方に対応しています。LoRAに `lora_te_*` などのText Encoder用重みが含まれている場合、デフォルトでは停止します。DiT以外のLoRAキーを無視したい場合は `--allow_partial` を指定してください。
+
+</details>
+
 
 ## 10. Others / その他
 
