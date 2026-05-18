@@ -250,6 +250,23 @@ pip install xformers --index-url https://download.pytorch.org/whl/cu124
 
 必要に応じてCUDAバージョンを変更してください。一部のGPUアーキテクチャではxformersが利用できない場合があります。
 
+### uvでのインストール（オプション）
+
+このリポジトリには uv 用の `pyproject.toml` も含まれています。現在の uv 設定では、PyTorch、TorchVision、xformers を CUDA 12.8 の PyTorch index からインストールします。
+
+```powershell
+uv sync
+uv run accelerate config
+```
+
+セットアップ後は、以下のように uv 経由でスクリプトを実行できます。
+
+```powershell
+uv run python train_network.py --help
+```
+
+CUDA のビルドを変更したい場合は、`pyproject.toml` の `torch`、`torchvision`、および `pytorch-cu128` の index URL を変更してください。
+
 ## Linux/WSL2環境でのインストール
 
 LinuxまたはWSL2環境でのインストール手順はWindows環境とほぼ同じです。`venv\Scripts\activate` の部分を `source venv/bin/activate` に変更してください。

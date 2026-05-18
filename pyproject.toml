@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "library"
+version = "0.0.0"
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "torch==2.11.0",
+    "torchvision==0.26.0",
+    "xformers",
+    "accelerate==1.6.0",
+    "transformers==4.54.1",
+    "diffusers[torch]==0.32.1",
+    "ftfy==6.3.1",
+    "opencv-python==4.10.0.84",
+    "einops==0.7.0",
+    "bitsandbytes",
+    "lion-pytorch==0.2.3",
+    "schedulefree==1.4",
+    "pytorch-optimizer==3.10.0",
+    "prodigy-plus-schedule-free==1.9.2",
+    "prodigyopt==1.1.2",
+    "tensorboard",
+    "safetensors==0.4.5",
+    "toml==0.10.2",
+    "voluptuous==0.15.2",
+    "huggingface-hub==0.34.3",
+    "imagesize==1.4.1",
+    "numpy",
+    "rich==14.1.0",
+    "sentencepiece==0.2.1",
+]
+
+[tool.setuptools.packages.find]
+include = ["library*", "pytorch_lightning*"]
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu128" }
+torchvision = { index = "pytorch-cu128" }
+xformers = { index = "pytorch-cu128" }
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
