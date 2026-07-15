@@ -156,7 +156,7 @@ def merge_to_dit_model(args, merge_dtype: torch.dtype | None, save_dtype: torch.
     logger.info(f"loading Anima DiT model: {args.dit}")
     logger.info(f"merging LoRA weights into DiT. ratios: {args.ratios}")
 
-    rename_hooks = WeightTransformHooks(rename_hook=lambda k: k[len("net.") :] if k.startswith("net.") else k)
+    rename_hooks = WeightTransformHooks(rename_hook=anima_utils.strip_anima_state_dict_prefix)
     dit_state_dict = load_safetensors_with_lora_and_fp8(
         model_files=args.dit,
         lora_weights_list=lora_weights_list,
